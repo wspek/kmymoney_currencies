@@ -10,3 +10,11 @@ def index(request):
 def eurusd(request):
     context = {"price": 1.1293}
     return render(request,'eurusd.html', context)
+
+
+def exchange_rate(request, src, dst):
+    context = {
+        "dst": dst,
+        "price": 1.1293
+    }
+    return render(request, 'exchange_rate.html', context)
