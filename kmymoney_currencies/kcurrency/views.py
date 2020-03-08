@@ -14,6 +14,7 @@ def eurusd(request):
 
 def exchange_rate(request, src, dst):
     context = {
+        "src": src,
         "dst": dst,
         "price": 1.1293
     }
