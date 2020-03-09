@@ -16,6 +16,6 @@ def exchange_rate(request, base, dst):
         "base": base,
         "dst": dst,
         "price": fx.current_rate(base, dst),
-        "time": datetime.now(pytz.utc).strftime('%y-%m-%d')
+        "time": datetime.now(pytz.utc).strftime('%Y-%m-%d')
     }
     return render(request, 'exchange_rate.html', context)
