@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    re_path('(?P<src>[A-Z]{3})(?P<dst>[A-Z]{3})', views.exchange_rate),
+    re_path('(?P<base>[A-Z]{3})(?P<dst>[A-Z]{3})', views.exchange_rate),
 ]
