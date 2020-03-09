@@ -3,10 +3,12 @@ from enum import Enum
 
 
 currency = {
-    'USD': 'oficial',
-    'USB': 'blue',
-    'EUR': 'oficial_euro',
-    'EUB': 'blue_euro',
+    # 'USD': 'oficial',
+    # 'USB': 'blue',
+    # 'EUR': 'oficial_euro',
+    # 'EUB': 'blue_euro',
+    'USD': 'blue',
+    'EUR': 'blue_euro',     # Due to the CEPO (09/03/2020) we can only realistically calculate with blue in KMyMoney.
 }
 
 
