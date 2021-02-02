@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 import kcurrency.forex as fx
+import kcurrency.markets as market
 
 
 def index(request):
@@ -19,3 +20,12 @@ def exchange_rate(request, base, dst):
         "time": datetime.now(pytz.utc).strftime('%Y-%m-%d')
     }
     return render(request, 'exchange_rate.html', context)
+
+
+def stock(request, ticker):
+    context = {
+        "ticker": ticker,
+        "price": market.get_price(ticker=ticker),
+        "time": datetime.now(pytz.utc).strftime('%Y-%m-%d')
+    }
+    return render(request, 'market_data.html', context)
