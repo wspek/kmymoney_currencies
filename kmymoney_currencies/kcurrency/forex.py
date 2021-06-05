@@ -1,4 +1,4 @@
-from forex_python.converter import CurrencyRates, RatesNotAvailableError
+from currency_converter import CurrencyConverter, RateNotFoundError
 from forex_python.bitcoin import BtcConverter
 import kcurrency.dolarblue as dolarblue
 
@@ -13,11 +13,11 @@ def current_rate(base, dst):
         rate = dolarblue.latest_rate(base, dst)
         return rate
 
-    c = CurrencyRates()
+    c = CurrencyConverter()
 
     try:
-        rate = c.get_rate(base, dst)
-    except RatesNotAvailableError:
+        rate = c.convert(1, base, dst)
+    except RateNotFoundError:
         return '<N/A>'
 
     return rate
