@@ -1,13 +1,25 @@
 from currency_converter import CurrencyConverter, RateNotFoundError
-from forex_python.bitcoin import BtcConverter
+from coinmarketcapapi import CoinMarketCapAPI, CoinMarketCapAPIError
 import kcurrency.dolarblue as dolarblue
 
 
-def current_rate(base, dst):
-    if base == 'BTC':
-        b = BtcConverter(force_decimal=False)
-        rate = b.get_latest_price(dst)
-        return rate
+def is_crypto(ticker):
+    return ticker in (
+        'BTC',
+        'XMR',
+        'GRIN',
+    )
+
+
+def current_rate(base, dst='USD'):
+    if is_crypto(ticker=base):
+        try:
+            cmc = CoinMarketCapAPI('c8ba2595-96c4-482b-8c98-4d4d555d0474')
+            r = cmc.cryptocurrency_quotes_latest(symbol=base)
+            rate = r.data[base]['quote']['USD']['price']
+            return rate
+        except CoinMarketCapAPIError:
+            raise Exception('CoinMarketCap threw an exception')
 
     if 'ARS' in (base, dst):
         rate = dolarblue.latest_rate(base, dst)

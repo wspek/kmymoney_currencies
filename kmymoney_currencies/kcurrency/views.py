@@ -25,7 +25,7 @@ def exchange_rate(request, base, dst):
 def stock(request, ticker):
     context = {
         "ticker": ticker,
-        "price": market.get_price(ticker=ticker),
+        "price": fx.current_rate(ticker) if fx.is_crypto(ticker) else market.get_price(ticker=ticker),
         "time": datetime.now(pytz.utc).strftime('%Y-%m-%d')
     }
     return render(request, 'market_data.html', context)
