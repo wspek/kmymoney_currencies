@@ -6,6 +6,7 @@ import kcurrency.dolarblue as dolarblue
 def is_crypto(ticker):
     return ticker in (
         'BTC',
+        'BCH',
         'XMR',
         'GRIN',
     )
