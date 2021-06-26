@@ -9,6 +9,8 @@ def is_crypto(ticker):
         'BCH',
         'XMR',
         'GRIN',
+        'ETH',
+        'DAI',
     )
 
 
@@ -34,7 +36,3 @@ def current_rate(base, dst='USD'):
         return '<N/A>'
 
     return rate
-
-
-if __name__ == '__main__':
-    print(current_rate('BTC', 'ARS'))
