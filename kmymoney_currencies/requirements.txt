@@ -15,4 +15,4 @@ simplejson==3.17.0
 six==1.15.0
 sqlparse==0.3.1
 urllib3==1.25.8
-yfinance==0.1.55
+yfinance==0.1.63
