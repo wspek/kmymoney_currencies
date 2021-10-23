@@ -11,6 +11,7 @@ def is_crypto(ticker):
         'GRIN',
         'ETH',
         'DAI',
+        'XRP',
     )
 
 
@@ -36,3 +37,8 @@ def current_rate(base, dst='USD'):
         return '<N/A>'
 
     return rate
+
+
+if __name__ == '__main__':
+    rate = current_rate(base='XRP')
+    print(rate)
