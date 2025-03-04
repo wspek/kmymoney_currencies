@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "kmymoney-currencies"
+version = "0.1.0"
+description = ""
+authors = ["Waldo Spek <waldospek@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+yfinance = "^0.2.54"
+django = "^5.1.6"
+forex-python = "^1.8"
+python-coinmarketcap = "^0.6"
+currencyconverter = "^0.18.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
