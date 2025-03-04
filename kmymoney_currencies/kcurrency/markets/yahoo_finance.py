@@ -7,7 +7,7 @@ def get_price(ticker):
     todays_data = msft.history(period='1d')
 
     try:
-        price = info['bid'] or todays_data['Close'][0]
+        price = info['regularMarketPrice'] or todays_data['Close'][0]
     except KeyError:  # Sometimes 'bid' does not exist when the market is closed.
         price = todays_data['Close'][0]
 
@@ -15,5 +15,5 @@ def get_price(ticker):
 
 
 if __name__ == '__main__':
-    price = get_price(ticker='NB.TO')
+    price = get_price(ticker='LWLG')
     print(price)
