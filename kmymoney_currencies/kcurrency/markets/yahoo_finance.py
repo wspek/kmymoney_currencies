@@ -15,5 +15,5 @@ def get_price(ticker):
 
 
 if __name__ == '__main__':
-    price = get_price(ticker='SYH.V')
+    price = get_price(ticker='AGAG.V')
     print(price)
