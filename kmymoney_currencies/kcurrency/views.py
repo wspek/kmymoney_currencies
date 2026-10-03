@@ -1,7 +1,7 @@
 from datetime import datetime
 import pytz
 
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 
 import kcurrency.forex as fx
@@ -23,9 +23,13 @@ def exchange_rate(request, base, dst):
 
 
 def stock(request, ticker):
+    price = fx.current_rate(ticker) if fx.is_crypto(ticker) else market.get_price(ticker=ticker)
+    if price is None:
+        raise Http404(f"No price data found for {ticker} (possibly delisted)")
+
     context = {
         "ticker": ticker,
-        "price": fx.current_rate(ticker) if fx.is_crypto(ticker) else market.get_price(ticker=ticker),
+        "price": price,
         "time": datetime.now(pytz.utc).strftime('%Y-%m-%d')
     }
     return render(request, 'market_data.html', context)
